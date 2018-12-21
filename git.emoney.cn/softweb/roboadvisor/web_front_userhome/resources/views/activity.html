@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title> 用户中心 </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+
+    <script id="html_activity_current" type="text/x-handlebars-template">
+        <div class="cua-iner">
+            <div class="curacts-pack">
+                <div class="activities-list">
+                    <div class="nav-tabs">
+                        <div class="">
+                            {{#each Message}}
+                            <div class="col-item activity_begining" activity_id="{{ActivityId}}" need_bind="{{NeedBind}}" need_sso="{{NeedSSO}}" clickkey="userhome_activity" clickdata="{{ActivityId}}" clickremark="" type="div">
+                                <div class="viewbox">
+                                    <div class="viewimg" url="{{ActivityUrl}}" open_model="{{OpenMode}}">
+                                        <img src="{{ImageUrl}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="clearfloat"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="html_activity_future" type="text/x-handlebars-template">
+        <div class="ca-iner">
+            <div class="commingacts-pack">
+                <div class="commingacts-list">
+                    <div class="nav-tabs">
+                        <div class="">
+                            {{#each Message}}
+                            <div class="col-item">
+                                <div class="viewbox">
+                                    <div class="viewimg" url="{{ActivityUrl}}">
+                                        <img src="{{ImageUrl}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="clearfloat"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="html_activity_finish" type="text/x-handlebars-template">
+        <div class='pastActs-list'>
+            <div class='pal-iner'>
+                <div class='pal-tablepack fixed-tablepack'>
+                    <div class='fixed-topbox'>
+                        <table class="table table-auto form-table fixed-thead">
+                            <colgroup>
+                                <col width="12%"></col>
+                                <col width="42%"></col>
+                                <col width="22%"></col>
+                                <col width="10%"></col>
+                                <col width="10%"></col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>活动主题</th>
+                                    <th>活动介绍</th>
+                                    <th>活动时间</th>
+                                    <th>活动动态</th>
+                                    <th>完成情况</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class='scroll-box'>
+                        <table class="table table-auto form-table">
+                            <colgroup>
+                                <col width="12%"></col>
+                                <col width="42%"></col>
+                                <col width="22%" style=""></col>
+                                <col width="10%"></col>
+                                <col width="10%"></col>
+                            </colgroup>
+
+                            <tbody>
+                                {{#each Message}}
+                                <tr>
+                                    <td>{{Title}}</td>
+                                    <td>{{Summary}}</td>
+                                    <td>{{BeginTime}}-{{EndTime}}</td>
+                                    <td>已结束</td>
+                                    <td>
+                                        {{#if IsJoin}} 已参加 {{else}} 未参加 {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <link rel="shortcut icon" href="$StaticServerHost$/static/images/favicon.png?$ResourceVersion$" type="image/x-icon">
+    <link rel="icon" sizes="any" mask="" href="$StaticServerHost$/static/images/images/favicon.png?$ResourceVersion$">
+    <link rel='stylesheet' type='text/css' media='screen' href='$StaticServerHost$/static/css/common.min.css?$ResourceVersion$'
+    />
+    <link rel='stylesheet' type='text/css' media='screen' href='$StaticServerHost$/static/css/app.min.css?$ResourceVersion$'
+    />
+    <link rel="stylesheet" href="$StaticServerHost$/static/libs/swiper/css/swiper.min.css?$ResourceVersion$">
+    <script>
+        var SSOStr="$SSOQueryString$";
+    </script>
+    <!--[if lt IE 9]>
+    <script src="$StaticServerHost$/static/libs/html5shiv.js?$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/respond.js?$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/excanvas.js?$ResourceVersion$"></script>
+    <![endif]-->
+    <script src='$StaticServerHost$/static/libs/jquery/jquery.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/libs/swiper/js/swiper.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/libs/handlebars/dist/handlebars.min.js?$ResourceVersion$'></script>
+</head>
+
+<body>
+    <div class='pl-container usrcenter'>
+        <!-- section-headtop -->
+        <div class='headertop'>
+            <div class='logoicon'></div>
+            <div class='topnav' id='topNav'>
+                <div class='navmenu'>
+                    <ul>
+                        <li class='' data-item='homepage'>
+                            <a href="$ServerVirtualPath$/homepage/index$SSOQueryString$" id="a_home_page">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe648;</i>
+                                </span>
+                                <span class='txt'>首 页</span>
+                            </a>
+                        </li>
+                        <li class='active' data-item='activitiespage'>
+                            <a href="$ServerVirtualPath$/activity/index$SSOQueryString$">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe631;</i>
+                                </span>
+                                <span class='txt'>活 动</span>
+                            </a>
+                        </li>
+                        <li class='' data-item='userpage'>
+                            <a href="$ServerVirtualPath$/mine/index$SSOQueryString$">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe600;</i>
+                                </span>
+                                <span class='txt'>我 的</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='topright'>
+                <button class='btn btn-default btn-zixun'>
+                    <i class='icon '>&#xe669;</i>
+                    <span id="span_online"></span>
+                </button>
+            </div>
+        </div>
+        <!-- end section-headtop -->
+
+        <!--  section-main 主显示区域   -->
+        <div class='maincont' id='MainCont'>
+            <div class='mc-pack'>
+                <div class='iner'>
+                    <div class='cntbox'>
+                        <!-- 活动页面 -->
+                        <div class="pageItem activitiespage" style='display:block;'>
+
+                            <!-- 活动分享 -->
+                            <div class="act-container share-acts" style='display:none;'>
+                                <div class="act-iner">
+                                    <div class="pad-iner">
+                                        <div class="act-pack">
+                                            <div class="imgbox">
+                                                <a href="###" class="btn-share">
+                                                    <i class="icon">&#xe634;</i>
+                                                </a>
+                                                <a href="">
+                                                    <img src="" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- 活动内容 -->
+                            <div class="act-container user-acts">
+                                <div class="act-iner">
+                                    <div class="act-pack">
+                                        <div class="tabs-pack">
+                                            <div class="act-tabsnav tabs-nav">
+                                                <ul class="nav nav-secondary">
+                                                    <li class="active" id="btn_activity_current">
+                                                        <a href="###">当期活动</a>
+                                                    </li>
+                                                    <li id="btn_activity_future">
+                                                        <a href="###">即将开始</a>
+                                                    </li>
+                                                    <li id="btn_activity_finish">
+                                                        <a href="###">往期活动</a>
+                                                    </li>
+                                                    <div class="clearfloat"></div>
+                                                </ul>
+                                            </div>
+                                            <div class="tabs-cnt">
+                                                <!-- 活动列表 -->
+                                                <div class="tabsitem active current-activities" id="div_activity_current">
+
+                                                </div>
+
+                                                <!-- 当前活动 -->
+                                                <div class="tabsitem comming-activities" id="div_activity_future">
+
+                                                </div>
+
+                                                <!-- 往期活动 -->
+                                                <div class="tabsitem past-aactivities" id="div_activity_finish">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 活动页面 end -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end section-main -->
+    </div>
+    <!-- 活动内容 -->
+    <div class="activities-show">
+        <div class="act-frame-view" id="showActFrame">
+            <iframe src="" frameborder="0"></iframe>
+        </div>
+    </div>
+    <script src='$StaticServerHost$/static/scripts/config_$StaticResEnv$.js?$ResourceVersion$'></script>
+    <script src="http://api2.tongji.emoney.cn/scripts/emoneyanalytics.js"></script>
+    <script src='$StaticServerHost$/static/libs/layer/layer.js?$ResourceVersion$'></script>
+    <script src="$StaticServerHost$/static/libs/placeholder/jquery.placeholder.min.js?$ResourceVersion$"></script>
+    <script src='$StaticServerHost$/static/scripts/app.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/params.js?$ResourceVersion$'></script>
+    <script src="http://static.emoney.cn/ds/jrtpad/jrtpadtongji.js"></script>
+    <script src='$StaticServerHost$/static/scripts/ad.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/template_activity.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/activity.js?$ResourceVersion$'></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/em_pc.js?$ResourceVersion$"></script>
+    <script type="text/javascript">document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticspv.js%3Fcode=DE847485C1D81B1D876E85185286DC6C' type='text/javascript'%3E%3C/script%3E"));</script>
+    <script>
+        $(document).ready(function () {
+            initAdvisoryId();
+            $(".btn-close").click(function () {
+                closePCWindow();
+            });
+        });
+    </script>
+</body>
+
+</html>

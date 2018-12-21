@@ -1,0 +1,131 @@
+{{$StaticServerHost := .StaticServerHost}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>板块一分钟</title>
+  <link rel="stylesheet" type="text/css" href="{{$StaticServerHost}}/static/css/block.css">
+</head>
+<body>
+  <div class="mainpack">
+        {{if .BKInfo}}
+        <div class="top"></div>
+        <div class="bg"></div>
+            <div class="maincnt">
+            <div class="container">
+            <div class="topline">{{.BKInfo.BK_Name}}</div>
+            <ul class="block-brief">
+                <li class="keyinfos">
+                {{.BKInfo.BK_KeyLogicHTML}}
+                </li>
+                <li class="newinfos">
+                {{.BKInfo.BK_ImpetusHTML}}
+                </li>
+            </ul>
+            <div class="blockitem up">
+                <div class="leftline flex flex-align-center flex-wraper">
+                {{range .BKInfo.UpperBKList}}
+                    <span class="block-i">{{.BKName}}</span>
+                {{end}}
+                </div>
+            </div>
+        </div>
+                <div class="bgc">
+            <div class="container">
+                <div class="blockitem infos">
+                    <div class="leftline">
+                    {{range .BKInfo.IndustryContentList}}
+                        <div class="infos-i">
+                            <span class="block-i">{{.StockDesc}}</span>（{{.StockName}}）</div>
+                    {{end}}
+                    </div>
+                </div>
+                <div class="blockitem down">
+                    <div class="leftline flex flex-align-center flex-wraper">
+                    {{range .BKInfo.LowerBKList}}
+                        <span class="block-i">{{.BKName}}</span>
+                    {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {{else}}
+        <div class="none-container">
+            <div class="top">
+            </div>
+            <div class="rocket">
+                <div class="text">内容编辑中，敬请期待...</div>
+            </div>
+        </div>
+        {{end}}
+  </div>
+  <script src="{{$StaticServerHost}}/static/libs/jquery.min.1.8.3.js"></script>
+  <script type="text/javascript">document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticspv.js%3Fcode=63FF0D221E3B37E0A5F47219C12EEE84' type='text/javascript'%3E%3C/script%3E"));</script>
+<script>
+    (function() {
+        function GetExternal() {
+            return window.external.EmObj;
+        }
+
+        function PC_JH(type, c) {
+            try {
+                var obj =
+                        GetExternal();
+                return obj.EmFunc(type, c);
+            } catch (e) {
+            }
+        }
+
+        function LoadComplete() {
+            try {
+                PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+            } catch (ex) {
+            }
+        }
+
+        function EM_FUNC_HIDE() {
+            try {
+                PC_JH("EM_FUNC_HIDE", "");
+            } catch (ex) {
+            }
+        }
+
+        function EM_FUNC_SHOW() {
+            try {
+                PC_JH("EM_FUNC_SHOW", "");
+            } catch (ex) {
+            }
+        }
+
+        function IsShow() {
+            try {
+                return PC_JH("EM_FUNC_WND_ISSHOW", "");
+            }
+            catch (ex) {
+                return "0";
+            }
+        }
+        function openWindow() {
+            LoadComplete();
+            if (IsShow() != "1") {
+                var height = 910;
+                if ($(".none-container").length > 0) {
+                    height = 620;
+                }
+                PC_JH("EM_FUNC_WND_SIZE", "w=812,h=" + height + ",mid");
+                EM_FUNC_SHOW();
+            }
+        }
+        openWindow();
+    })();
+
+    document.getElementsByClassName('top')[0].style.height=document.getElementsByClassName('container')[0].offsetHeight+'px';
+    document.getElementsByClassName('bg')[0].style.height = (window.innerHeight - document.getElementsByClassName('top')[0].offsetHeight) + 'px';
+</script>
+
+</body>
+</html>

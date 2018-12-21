@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天眼盯盘-题材热点</title>
+    <style>html{ background-color:transparent;height:100%;overflow:hidden;font-family:"Microsoft YaHei","宋体",Helvetica,Arial,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB","Hiragino Sans GB W3","FontAwesome",sans-serif}html{SCROLLBAR-FACE-COLOR:#999;SCROLLBAR-HIGHLIGHT-COLOR:#999;SCROLLBAR-SHADOW-COLOR:#999;SCROLLBAR-ARROW-COLOR:#fc0;SCROLLBAR-TRACK-COLOR:#666;SCROLLBAR-3DLIGHT-COLOR:#666;SCROLLBAR-DARKSHADOW-COLOR:#666}::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.2);background-color:rgba(0,0,0,.001)}::-webkit-scrollbar{width:7px;height:7px;background-color:#111}::-webkit-scrollbar-thumb{background-color:#333;border:1px solid #333}body{width:100%;height:100%;font-size:14px;background-color:#000;overflow:hidden;color:#fff;background-position:center 0;background-size:cover;background-repeat:no-repeat}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0}ul,li,ol{list-style:none}#loading{display:none;line-height:35px;height:35px;font-size:14px;color:#fff;border:1px solid #666;position:absolute;top:40%;left:42%;width:140px;text-indent:42px;z-index:998;padding-right:10px}.main-box{text-align:center;padding:0 2em}.main-box .tit-box{padding-top: 10px;padding-bottom: 2px;}.main-box .txttit{font-weight:normal;font-size:30px;letter-spacing:8px;text-indent:8px}.main-box .percent{font-size:30px;font-weight:normal}.main-box .percent.red{color:#ff2e2d}.main-box .percent.green{color:#31ad37}.main-box .cnt-box{text-align:left}.main-box .cnt-box .targname{background-color:#ff9408;display:inline-block;*zoom:1;*display:inline;padding:0 10px}.main-box .cnt-box .describ{padding:5px 0;}
+
+    .hotspotsummary{
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        height: 58px;
+        line-height: 1.4;
+    }
+    </style>
+</head>
+<body style="background-image:url('{{.info.TopicPic}}')">
+
+<div class="main-box" style="background-color: rgba(18, 37, 65, 0.4);height:100%;">
+    <div class="tit-box">
+        <h2 class="txttit"> {{.info.GroupName}} </h2>
+    </div>
+    <div class="cnt-box">
+        <div class="targs"><span class="targname">风口题材</span></div>
+        <div class="describ">
+            <div class="hotspotsummary">
+            {{.info.TopicSummaryHTML}}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

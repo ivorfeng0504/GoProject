@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a961749f-377b-4bcd-8d03-5d903497527a" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/fundchannel/contract/ContextExt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/protected/model/Strategy/LatestInfo.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/protected/model/Strategy/Strategy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/protected/service/Strategy/StrategyService.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/util/cache/cacheutil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/static/scripts/pageJs/home_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/static/scripts/pageJs/home_index_template.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/config/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/config/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/const/const.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/const/const.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/contract/ResponseInfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/contract/ResponseInfo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/core/cmap.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/core/cmap.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/core/exception/exception.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/core/exception/exception.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/global/global.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/global/global.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/model/DemoInfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/model/DemoInfo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/repository/BaseRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/repository/BaseRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/repository/DemoRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/repository/DemoRepository.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/service.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/service/BaseService.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/service/BaseService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/protected/service/demo/DemoService.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/protected/service/demo/DemoService.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/task_fundchannel/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/task_fundchannel/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/task_fundchannel/handlers/demo.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/task_fundchannel/handlers/demo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/task_fundchannel/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/task_fundchannel/server/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/util/file/file.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/util/file/file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/util/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/util/http/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/util/json/json.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/util/json/json.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/util/rsa/rsa.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/util/rsa/rsa.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/util/time/time.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/util/time/time.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/demo/demo.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/demo/demo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/test/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/test/default.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/config/develop/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/config/develop/app.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/config/develop/dotlog.conf" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/config/develop/dotlog.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/static/libs/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/home/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/resources/static/styles/demo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/server/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/server/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fundchannel/web_fundchannel/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/fundchannel/web_fundchannel/server/server.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/home/index.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="GOROOT" path="E:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/fundchannel" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="530" />
+    <option name="y" value="59" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/fundchannel" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25479743" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="调试" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32998884" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32998884" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/home/index.go</url>
+          <line>15</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fundchannel/web_fundchannel/handlers/home/index.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,0 +1,1 @@
+define("index",["b"],function(n){return{appindex:n.color}});

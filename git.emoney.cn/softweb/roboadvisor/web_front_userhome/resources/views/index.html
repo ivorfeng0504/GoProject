@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title> 用户中心 </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="stylesheet" type="text/css" href="$StaticServerHost$/static/css/common.css?$ResourceVersion$">
+    <link rel="stylesheet" type="text/css" href="$StaticServerHost$/static/css/app.min.css?$ResourceVersion$">
+</head>
+
+<body>
+    <div class='pl-container usrcenter'>
+        <!-- section-headtop -->
+        <div class='headertop'>
+
+            <div class='logoicon'></div>
+            <div class='topnav'>
+                <div class='navmenu'>
+                    <ul>
+                        <li class='active' data-item='homepage'>
+                            <a href="$ServerVirtualPath$/homepage/index$SSOQueryString$">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe648;</i>
+                                </span>
+                                <span class='txt'>首 页</span>
+                            </a>
+                        </li>
+                        <li class='' data-item='activitiespage'>
+                            <a href="$ServerVirtualPath$/activity/index$SSOQueryString$" flag="menuurl">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe631;</i>
+                                </span>
+                                <span class='txt'>活 动</span>
+                            </a>
+                        </li>
+                        <li class='' data-item='userpage'>
+                            <a href="$ServerVirtualPath$/mine/index$SSOQueryString$" flag="menuurl">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe600;</i>
+                                </span>
+                                <span class='txt'>我 的</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='topright'>
+                <div class='btn btn-default btn-zixun'>
+                    <i class='icon '>&#xe669;</i> <span id="span_online"></span>
+                </div>
+            </div>
+        </div>
+        <!-- end section-headtop -->
+
+    <!--  section-main 主显示区域   -->
+        <div class='maincont' id='MainCont'>
+        <div class='mc-pack'>
+            <div class='iner'>
+                <div class='cntbox'>
+
+                    <!-- 用户中心首页 -->
+                    <div class="pageItem homepage" style='display:block;'>
+                        <div class='cnt-l'>
+                            <div class='user-top clearfix'>
+                                <div class="piner" id="div_userInfo">
+
+                                </div>
+                            </div>
+                                <div class='act-list' id="actList">
+                                    <div class="iner">
+                                        <div class="topcont" id="top_NewsList">
+                                        </div>
+                                        <div class="list-scrollbox" style="height: 150px;" id="li_NewsList">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='cnt-r'>
+                                <div class='adver-up' id="div_adver_up">
+                                </div>
+                                <div id="div_free" style="display: none;">
+                                    <div class='adver-dwnew' id="div_adver_mall">
+                                        <a id="btn_onlineBuy"><img height="94" width="210" src="$StaticServerHost$/static/images/onlinebuy.png"></a>
+                                    </div>
+                                    <div class='adver-dwnew' id="div_adver_dwnew">
+                                    </div>
+                                </div>
+                                <div class='adver-dw' id="div_adver_dw"  style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end section-main -->
+        </div>
+    </div>
+<!-- 弹窗内容 start-->
+<div class="propwin-pack" style="">
+    <!-- 注册弹窗 -->
+    <div class="popwin-section popwin-regist" id='userRegist' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div class="tit-tips">免费领特权、登录更方便、密码轻松找</div>
+                    <div>
+
+                        <form class="form-horizontal" id="form_reg">
+                            <div class="form-group">
+                                <label for="usrMobile" class="col-xs-3 required"> 手机号码 </label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" flag="newMobile" id="usrMobile" placeholder="请输入11位手机号" data-type="手机号码">
+                                </div>
+                                <div class="col-xs-3"><span class="btn-getcheckcode" data-mobileid="usrMobile"> 获取验证码 </span></div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrCheckcode" class="col-xs-3 required"> 验证码 </label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" id="usrCheckcode" placeholder="请输入验证码" data-type="验证码">
+                                </div>
+
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrPassword" class="col-xs-3 required">登录密码</label>
+                                <div class="col-xs-6">
+                                    <input type="password" class="form-control" id="usrPassword" placeholder="请输入6位数字密码" data-type="登录密码">
+                                </div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrVeryfypwd" class="col-xs-3 required">确认密码</label>
+                                <div class="col-xs-6">
+                                    <input type="password" class="form-control" id="usrVeryfypwd" placeholder="请再次输入6位数字密码" data-type="确认密码">
+                                </div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-submitline">
+                                <button type="button" class="btn btn-primary" id="submit_reg">确　定</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 绑定手机弹窗 -->
+    <div class="popwin-section popwin-regist" id='bindPhone' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div class="tit-tips">免费领特权、登录更方便、密码轻松找</div>
+                    <div>
+
+                        <form class="form-horizontal" id="form_bindPhone">
+                            <div class="form-group">
+                                <label for="usrbindMobile" class="col-xs-3 required"> 手机号码 </label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" flag="newMobile" id="usrbindMobile" placeholder="请输入11位手机号" data-type="手机号码">
+                                </div>
+                                <div class="col-xs-3"><span class="btn-getcheckcode" data-mobileid="usrbindMobile" id="btn_getPwd" data-type="getpwd"> 获取验证码 </span></div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrbindPwd" class="col-xs-3 required"> 短信验证码 </label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" id="usrbindPwd" placeholder="请输入短信验证码" data-type="短信验证码">
+                                </div>
+
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrbindphonetCheckcode" class="col-xs-3 required"> 图形验证码 </label>
+                                <div class="col-xs-4" style=" padding-right: 0">
+                                    <input type="text" class="form-control" id="bindphone_code" placeholder="请输入图形验证码" data-type="图形验证码">
+                                </div>
+                                <div class="col-xs-4" style=" padding-right: 0">
+                                    <img name="img_code" style="cursor: pointer"/>
+                                </div>
+
+                                <div class="clearfloat"></div>
+                            </div>
+
+                            <div class="form-submitline">
+                                <button type="button" class="btn btn-primary" id="submit_phonebind"> 确定绑定 </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 修改密码 弹窗 -->
+    <div class="popwin-section popwin-regist" id='usrModyPwd' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div class="tit-tips">免费领特权、登录更方便、密码轻松找</div>
+                    <div>
+
+                        <form class="form-horizontal" id="form_modifypwd">
+
+                            <div class="form-group">
+                                <label for="usrnewPassword" class="col-xs-3 required"> 新密码 </label>
+                                <div class="col-xs-6">
+                                    <input type="password" class="form-control" id="usrnewPassword" placeholder="请输入新密码" data-type="新密码" maxlength="6">
+                                </div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrVeryfynewpwd" class="col-xs-3 required">确认新密码</label>
+                                <div class="col-xs-6">
+                                    <input type="password" class="form-control" id="usrVeryfyndwpwd" placeholder="请再次输入确认密码" data-type="确认密码" maxlength="6">
+                                </div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrMobile" class="col-xs-3 required"> 已绑定手机 </label>
+                                <div class="col-xs-3">
+                                    <div class="txt-form" flag="div_mobilemask">138***234</div>
+                                </div>
+                                <div class="col-xs-3"><span class="btn-getcheckcode" data-type="encrypt"> 获取验证码 </span></div>
+                                <div class="clearfloat"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="usrmodyphoneCheckcode" class="col-xs-3 required"> 验证码 </label>
+                                <div class="col-xs-6">
+                                    <input type="text" class="form-control" id="usrmodyphoneCheckcode" placeholder="请输入验证码" data-type="验证码">
+                                </div>
+
+                                <div class="clearfloat"></div>
+                            </div>
+
+                            <div class="form-submitline">
+                                <button type="button" class="btn btn-primary" id="submit_modifypwd">确　定</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 用户信息 弹窗 -->
+    <div class="popwin-section popwin-regist" id='usrInfor' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div>
+                        <div class="user-infor-show" id="div_myProfile">
+
+                        </div>
+                        <div class="form-submitline">
+                            <button type="button" class="btn btn-primary" id="btn_sure">确　定</button>
+                        </div>
+                        <div class="sur-moreopt">
+                            <a href="http://suit.emoney.cn/" target="_blank"> 用户评测 </a>　|　<a href="###"> 用户协议 </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 信息阅读 弹窗 -->
+    <div class="popwin-section popwin-regist" id='newsArticleshow' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div>
+                        <div class="news-article" id="div_article">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--修改头像弹窗-->
+    <div class="popwin-section popwin-regist" id='userAvatarSelect' style="display:none; ">
+        <div class="pw-p">
+            <div class="pw-iner">
+                <div class="pw-c">
+                    <div class="user-avatar">
+                        <ul>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_13.png" alt="默认头像" data-num="13">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_14.png" alt="默认头像" data-num="14">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_1.png" alt="默认头像" data-num="1">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_2.png" alt="默认头像" data-num="2">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_3.png" alt="默认头像" data-num="3">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_4.png" alt="默认头像" data-num="4">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_5.png" alt="默认头像" data-num="5">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_6.png" alt="默认头像" data-num="6">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_7.png" alt="默认头像" data-num="7">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_8.png" alt="默认头像" data-num="8">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_9.png" alt="默认头像" data-num="9">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_10.png" alt="默认头像" data-num="10">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_11.png" alt="默认头像" data-num="11">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_12.png" alt="默认头像" data-num="12">
+                                </div>
+                            </li>
+                            <li class="avatar0">
+                                <div class="a-iner">
+                                    <i class="icon">&#xe671;</i>
+                                    <img src="$StaticServerHost$/static/images/Arena_15.png" alt="默认头像" data-num="15">
+                                </div>
+                            </li>
+
+                        </ul>
+                        <div class="clearfloat"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 弹窗内容 end -->
+<input type="hidden" id="PageIndex" value="1">
+<input type="hidden" id="hid_mobilex">
+<input type="hidden" id="hid_headimg">
+<!--用户信息模块-->
+<script id="userInfo-template" type="text/x-handlebars-template">
+    <div class='ut-l'>
+        <div>
+            <div class='usr-avatar' id='usrAvatarShow'>
+                <div class='avatar-mask'>
+                    <img src="{{HeadImgFormat Headportrait}}">
+                </div>
+                <div class="usr-modyavatar">
+                    <i class="icon">&#xe624;</i>
+                </div>
+            </div>
+        </div>
+        <div class="usr-downtip">
+        {{#IsFreeUserFormat UserType}}{{else}}
+            <div class="date-vali">
+            {{#HasValueFormat EndDate}}
+            有效期 : <span>{{EndDate}}</span>
+            {{else}}
+            {{/HasValueFormat}}
+            </div>
+            <div class="usr-infedit">
+                <a href='###' flag="btn_ModifyPwd" data-usertype="{{UserType}}">修改密码</a> |
+                <a href='$ServerVirtualPath$/mine/myprofile$SSOQueryString$' flag="btn_MyProfile">个人信息</a>
+            </div>
+        {{/IsFreeUserFormat}}
+        </div>
+    </div>
+    <div class='ut-r'>
+        <div class="usr-state">
+            <span class="usr-vip">
+                <!-- <i class='icon icon-vip5'></i> -->
+                <span class="viplv {{VIPImgFormat PIDType}}"></span>
+            </span>
+            <span class="usr-name">
+                <span id="editUsrname" class="user-name">
+                    <input value="{{NickName}}" maxlength="20" id="input_nickname">
+                    <b class="text-ellipsis" title="{{NickName}}">{{NickName}}</b>
+                </span>
+            </span>
+            <span class="usr-edit" id="modyUsrname">
+                <a href='javascript:;'>[编辑]</a>
+            </span>
+
+            <span class="usr-mobile active" style="cursor: pointer;">
+                {{#IsFreeUserFormat UserType}}{{else}}
+                <a href="###" flag="btn_BindAccount" data-usertype="{{UserType}}" data-mobilemask="{{MobileMask}}"><i class='icon '>&#xe665;</i></a>
+                {{/IsFreeUserFormat}}
+            </span>
+        </div>
+        {{#IsFreeUserFormat UserType}}
+        {{else}}
+        <div class="usr-level">
+             <span class="starlv " id="starlv">
+                <i class="icon-tresior"></i><i class="icon-goldcoin lv2"></i><i class="icon-silvercoin lv3"></i>
+            </span>
+        </div>
+        <div class="getState" style="display: none">
+            <span></span>
+            <button class='btn btn-primary' ></button>
+        </div>
+        <div class="usr-decoration">
+            <div class="ud-pack">
+                <ul id="userDecorationShow" class="ud-box wybb-ud hwbs-ud hddr-ud gpmz-ud">
+                    <li class="ud-wybb ud-1" title="文娱标兵"></li>
+                    <li class="ud-hwbs ud-2" title="合格投资者"></li>
+                    <li class="ud-hddr ud-1" title="互动达人"></li>
+                    <li class="ud-gpmz ud-1" title="高朋满座"></li>
+                    <li class="ud-seed ud-1" title="种子用户"></li>
+                </ul>
+            </div>
+        </div>
+        {{/IsFreeUserFormat}}
+    </div>
+</script>
+
+<!--我的资料-->
+<script id="myProfile-template" type="text/x-handlebars-template">
+    <table>
+        <tbody>
+            <tr>
+            <th>用户名：</th>
+            {{#IsMobileUserFormat UserType}}
+            <td>{{NickName}}</td>
+            {{else}}
+            <td>{{Account}}</td>
+            {{/IsMobileUserFormat}}
+            </tr>
+            <tr>
+            <th>昵称：</th><td>{{NickName}}</td>
+            </tr>
+            <tr>
+            <th>手机：</th><td>{{MobileMask}}</td>
+            </tr>
+            <tr>
+            <th>所在城市：</th><td>上海，上海市</td>
+            </tr>
+            <tr>
+            <th>服务网点：</th><td>上海益盟</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</script>
+
+<!--学习综合-置顶-->
+<script id="xxzhNewsTop-template" type="text/x-handlebars-template">
+{{#each NewsList}}
+<ul>
+    <li class="topstar" flag="openWindow" data-id="{{ID}}" title="查看详情"><span>
+        <i class='icon '>&#xe777;</i>
+        <span class="txt text-ellipsis">{{Title}}</span>
+        {{#IsTodayFormat LastModifyTime}}
+        <em class='time'>{{DateFormat LastModifyTime "HH:MM"}}</em>
+        {{else}}
+        <em class='time'>{{DateFormat LastModifyTime "mm-dd HH:MM"}}</em>
+        {{/IsTodayFormat}}
+    </span>
+    </li>
+</ul>
+{{/each}}
+</script>
+
+<!--学习综合-非置顶-->
+<script id="xxzhNewsList-template" type="text/x-handlebars-template">
+<ul>
+{{#each NewsList}}
+    <li flag="openWindow" data-id="{{ID}}" title="查看详情"><span>
+        <span class="txt text-ellipsis">{{Title}}</span>
+        {{#IsTodayFormat LastModifyTime}}
+        <em class='time'>{{DateFormat LastModifyTime "HH:MM"}}</em>
+        {{else}}
+        <em class='time'>{{DateFormat LastModifyTime "mm-dd HH:MM"}}</em>
+        {{/IsTodayFormat}}
+    </span>
+    </li>
+{{/each}}
+</ul>
+</script>
+
+<!--通知详情弹窗-->
+<script id="newsinfo-template" type="text/x-handlebars-template">
+<div class="na-title">
+    <h2 class="text-ellipsis">{{Title}}</h2>
+    <h3> 发布时间： {{DateFormat LastModifyTime "yyyy-mm-dd HH:MM"}}</h3>
+</div>
+<div class="na-optfn">
+</div>
+<div class="na-content">
+    <div class="cnt-showbox">
+        <div>{{{NewsContent}}}</div>
+    </div>
+</div>
+</script>
+
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/config_$StaticResEnv$.js?$ResourceVersion$"></script>
+<script type="text/javascript" src='$StaticServerHost$/static/libs/json2/json2.min.js?$ResourceVersion$'></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/handlebars/dist/handlebars.min.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/jquery.min.1.8.3.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/dateformat.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/main.min.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/params.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/EMCommon.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/em_pc.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/handlebars-common.js?$ResourceVersion$"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/index.js?$ResourceVersion$"></script>
+<script type="text/javascript" src='$StaticServerHost$/static/libs/layer/layer.js?$ResourceVersion$'></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/placeholder/jquery.placeholder.min.js?$ResourceVersion$"></script>
+<script type="text/javascript" src='$StaticServerHost$/static/scripts/app.min.js?$ResourceVersion$'></script>
+<script type="text/javascript" src='$StaticServerHost$/static/libs/rsa/rasall.js?$ResourceVersion$'></script>
+<script type="text/javascript" src='$StaticServerHost$/static/libs/rsa/rsa.js?$ResourceVersion$'></script>
+<script src="http://static.emoney.cn/ds/jrtpad/jrtpadtongji.js"></script>
+<script src='$StaticServerHost$/static/scripts/ad.js?$ResourceVersion$'></script>
+
+<script>
+    $(document).ready(function () {
+        openPCWindow();
+        initAdvisoryId();
+        initAdvisoryIndex_up();
+        initAdvisoryIndex_down();
+        initAdvisoryIndex_downFree();
+
+        $(".btn-close").click(function () {
+            closePCWindow();
+        });
+        
+        $("#btn_onlineBuy").click(function () {
+            EM_FUNC_BUYACCOUNT();
+        });
+    });
+function openPop(obj,title,width,height) {
+    $("input[ type='text']").val("");
+    $("input[ type='password']").val("");
+    layer.open({
+        type: 1,
+        title: [title, ''],
+        skin: 'ucpop-layer', //加上边框
+        area: [width + 'px', height + 'px'], //宽高
+        content: $('#' + obj) //'弹窗内容'
+    });
+}
+function closePop() {
+    layer.closeAll();
+}
+
+//活动页跳转回首页 判断是否弹出绑定窗口
+var isOpenRegPop = ParamFunc.getParam("openreg");
+if(isOpenRegPop == "1") {
+    LoadValidCode();
+    openPop("bindPhone","手机绑定",430,310);
+}
+
+// var uid = ParamFunc.getParam("uid");
+// var adpid = Ad_PID;//ParamFunc.getParam("pid");
+// var sid = ParamFunc.getParam("sid");
+// var tid = ParamFunc.getParam("tid");
+// var online = AddjrptAd_Click("span_online", sid, tid, adpid, Ad_AC_Online, AppId, uid, "");//在线咨询
+// var adver_up = AddjrptAd_Click("div_adver_up", sid, tid, adpid, Ad_AC_Index_Up,AppId, uid, "");//首页-右上广告
+// var adver_dw = AddjrptAd_Click("div_adver_dw", sid, tid, adpid, Ad_AC_Index_Dw,AppId, uid, "");//首页-右下广告
+//初始化活动点击链接
+initActivityAd();
+</script>
+</body>
+
+</html>

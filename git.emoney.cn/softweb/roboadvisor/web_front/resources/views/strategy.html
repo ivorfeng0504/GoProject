@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>策略详情</title>
+    <link rel="stylesheet" type="text/css" href="$StaticServerHost$/static/styles/index.css?$ResourceVersion$">
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/em_pc.js?$ResourceVersion$"></script>
+</head>
+<body>
+<div class="mainpack">
+    <div class="article" id="div_strategy">
+    </div>
+</div>
+
+<!--Item Template-->
+<script id="StrategyCon-template" type="text/x-handlebars-template">
+<div class="article-cnt">
+    <div class="iner">
+        <div>
+        {{{Description}}}
+        </div>
+    </div>
+</div>
+</script>
+
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/config_$StaticResEnv$.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/params.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/dateformat.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/libs/jquery.min.1.8.3.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/handlebars-common.js"></script>
+<script type="text/javascript" src="$StaticServerHost$/static/scripts/EMCommon.js?$ResourceVersion$"></script>
+<script type="text/javascript">
+// 默认页面的宽高尺寸
+var winHeight = 500, winWidth = 700;
+// 先返回页面的宽高
+try {
+    PC_JH("EM_FUNC_DLGSIZE", winHeight + "&" + winWidth);
+} catch (ex) { }
+
+$(document).ready(function() {
+    EM_FUNC_DOWNLOAD_COMPLETE();
+
+    resize();
+
+    $(window).resize(function(event) {
+        resize();
+    });
+
+    function resize(){
+        $('.article-cnt').height($(window).height()-$('.article-tit').outerHeight()-12);
+    }
+
+    var StrategyID = ParamFunc.getParam("StrategyID");
+    var source = $("#StrategyCon-template").html();
+    var template = Handlebars.compile(source);
+
+    $.ajax({
+        url:www + "strategy/detail" ,
+        type: 'GET',
+        dataType: 'json',
+        data: {StrategyID:StrategyID},
+        success: function(data){
+            if(data.RetCode=="0") {
+                var retObj = data.Message;
+                var html = template(retObj);
+                $("#div_strategy").html(html);
+
+                setTimeout(function(){resize();},200);
+            }
+        },
+        beforeSend: function () {
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+
+        }
+    });
+
+
+
+});
+
+</script>
+</body>
+</html>

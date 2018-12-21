@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="//static.dsclient.emoney.cn">
+    <link rel="dns-prefetch" href="//static.emoney.cn">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>用户培训</title>
+    <link rel="stylesheet" href="$StaticServerHost$/static/train/static/css/common.css?rev=$ResourceVersion$">
+    <link rel="stylesheet" href="$StaticServerHost$/static/train/static/css/usertrain.opt.css?rev=$ResourceVersion$">
+    <script>
+        if (!document.addEventListener) {
+            // IE6~IE8
+            document.write('<script src="$StaticServerHost$/static/train/static/libs/oldIEpadding.js?rev=$ResourceVersion$"><\/script>');
+        }
+    </script>
+</head>
+
+<body>
+<div class="ut-container">
+    <div class="ut-header">
+        <div class="uth-topbox">
+            <div class="ut-logo"></div>
+            <div class="uth-nav">
+                <ul id="uthNav">
+                    <li class="current" data-tagindex="0" data-date="" data-tagid="0">
+                        <div href="javascript:;" clickkey="topnav|drzx" clickdata="null|usertraining" clickremark="">
+                            <i class="icon-1">&#xe736;</i>
+                            <span>当日最新</span>
+                        </div>
+                    </li>
+                    <li data-tagindex="0" data-date="" data-tagid="0">
+                        <div href="javascript:;" clickkey="topnav|jpch" clickdata="null|usertraining" clickremark="">
+                            <i class="icon-1">&#xe737;</i>
+                            <span>解盘晨会</span>
+                        </div>
+                    </li>
+                    <li data-tagindex="0" data-date="" data-tagid="0">
+                        <div href="javascript:;" clickkey="topnav|clsz" clickdata="null|usertraining" clickremark="">
+                            <i class="icon-1">&#xe738;</i>
+                            <span>策略实战</span>
+                        </div>
+                    </li>
+                    <li data-tagindex="0" data-date="" data-tagid="0">
+                        <div href="javascript:;" clickkey="topnav|zbxx" clickdata="null|usertraining" clickremark="">
+                            <i class="icon-1">&#xe739;</i>
+                            <span>指标学习</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="ut-mainbox" id="utMainBox">
+        <div class="left-box">
+            <div class="menu-box">
+                <div class="strategy-list-box" id="strategyListBox">
+                    <ul class="strategy-list" id="strategyList">
+                    </ul>
+                    <div class="rili-box today" id="riliBox">
+                        <i class="icon-1 down" id="strategyMenuIcon">&#xe6b2;</i>
+                        <input type="text" id="d11" style="display: none;">
+                        <div class="rili jrzx"  onclick="WdatePicker({el:'d11',onpicked:window.pickedFunc,position:{left:-4,top:10},maxDate:'%y-%M-{%d+7}'})"></div>
+                        <div class="rili other" onclick="WdatePicker({el:'d11',onpicked:window.pickedFunc,position:{left:-159,top:10},maxDate:'%y-%M-{%d+7}'})"></div>
+                        <div class="riqi" id="riqi">今日</div>
+                    </div>
+                </div>
+                <div id="menuScroll">
+                    <ul class="menu-list" id="menuList">
+                        <div class="no-info"><span class="inerloading"></span>正在加载...</div>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="" id="videoDetailBox">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 调用客户端接口 -->
+<script type="text/javascript">
+    (function() {
+        function GetExternal() {
+            return window.external.EmObj;
+        }
+
+        function PC_JH(type, c) {
+            try {
+                var obj =
+                        GetExternal();
+                return obj.EmFunc(type, c);
+            } catch (e) {}
+        }
+
+        function LoadComplete() {
+            try {
+                PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+            } catch (ex) {}
+        }
+
+        function EM_FUNC_HIDE() {
+            try {
+                PC_JH("EM_FUNC_HIDE", "");
+            } catch (ex) {}
+        }
+
+        function EM_FUNC_SHOW() {
+            try {
+                PC_JH("EM_FUNC_SHOW", "");
+            } catch (ex) {}
+        }
+
+        function IsShow() {
+            try {
+                return PC_JH("EM_FUNC_WND_ISSHOW", "");
+            } catch (ex) {
+                return "0";
+            }
+        }
+
+        function openWindow() {
+            LoadComplete();
+            if (IsShow() != "1") {
+                PC_JH("EM_FUNC_WND_SIZE", "w=980,h=600,mid");
+                EM_FUNC_SHOW();
+            }
+        }
+        openWindow();
+    })();
+</script>
+<script src="$StaticServerHost$/static/train/static/scripts/modules/public/global_config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/libs/jquery/jquery.handlebars.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/libs/nicescroll/jquery.nicescroll.min.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/libs/layer/layer.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/libs/My97DatePicker/WdatePicker.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/scripts/modules/public/utils.opt.js?rev=$ResourceVersion$"></script>
+<script src="$StaticServerHost$/static/train/static/scripts/usertraining/usertrain.opt.js?rev=$ResourceVersion$"></script>
+<script type="text/javascript">
+    document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=8B9093887C7B911EA8A566613F19F22D' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title> 用户中心 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="$StaticServerHost$/static/images/favicon.png" type="image/x-icon">
+    <link rel="icon" sizes="any" mask="" href="$StaticServerHost$/static/images/favicon.png">
+    <!--[if lt IE 9]>
+    <script src="$StaticServerHost$/static/libs/html5shiv.js"></script>
+    <script src="$StaticServerHost$/static/libs/respond.js"></script>
+    <script src="$StaticServerHost$/static/libs/excanvas.js"></script>
+
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="$StaticServerHost$/static/css/common.css?rev=$ResourceVersion$" />
+    <link rel="stylesheet" type="text/css" media="screen" href="$StaticServerHost$/static/css/app.css?rev=$ResourceVersion$" />
+    <script src="$StaticServerHost$/static/libs/json2/json2.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/jquery/jquery.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/scripts/config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+</head>
+
+<body>
+    <div class="pl-container usrcenter">
+        <!-- section-headtop -->
+        <div class="headertop">
+
+            <div class="logoicon"></div>
+            <div class="topnav" id="topNav">
+                <div class="navmenu">
+                    <ul>
+                        <li class="" data-item="homepage">
+                            <a href="$ServerVirtualPath$/homepage/index$SSOQueryString$">
+                                <span class="sign">
+                                    <i class="icon">&#xe648;</i>
+                                </span>
+                                <span class="txt">首 页</span>
+                            </a>
+                        </li>
+                        <li class="" data-item="activitiespage">
+                            <a href="$ServerVirtualPath$/activity/index$SSOQueryString$">
+                                <span class="sign">
+                                    <i class="icon">&#xe631;</i>
+                                </span>
+                                <span class="txt">活 动</span>
+                            </a>
+                        </li>
+                        <li class="active" data-item="userpage">
+                            <a href="$ServerVirtualPath$/mine/index$SSOQueryString$">
+                                <span class="sign">
+                                    <i class="icon">&#xe600;</i>
+                                </span>
+                                <span class="txt">我 的</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="topright">
+                <div class="btn btn-default btn-zixun">
+                    <i class="icon ">&#xe669;</i><span id="span_online"></span></div>
+            </div>
+        </div>
+        <!-- end section-headtop -->
+
+        <!--  section-main 主显示区域   -->
+        <div class="maincont" id="MainCont">
+            <div class="mc-pack">
+                <div class="iner">
+                    <div class="cntbox">
+                        <div class="usr-anounce">
+                            <div class="pull-right">
+                                <div class="btn-goback">
+                                    <a href="$ServerVirtualPath$/mine/index$SSOQueryString$">
+                                        <i class="icon-1">&#xe60c;</i>返回</a>
+                                </div>
+                                <div class="btn-goback btn-gobacktoorderlist" style="display:none;">
+                                    <a href="javascript:;">
+                                        <i class="icon-1">&#xe60c;</i>返回</a>
+                                </div>
+                            </div>
+                            <div class="text-primary">
+                                <i class="icon">&#xe663;</i> 订单退款申请 </div>
+                        </div>
+
+
+                        <div class="refund-scrollbox">
+                            <div style="min-height:254px;">
+                                <!-- 用户 我的  -->
+                                <div class="pageItem userpage" id="userProListshowbox" style="display:block;">
+                                    <div>
+                                        <div>
+                                            <div class="tabs-pack">
+                                                <!-- 我的产品 -->
+                                                <div class="usrs-products" id="usersProductsList">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 退款处理 -->
+                                <div class="pageItem userpage" id="userRefundshowbox" style="">
+                                    <div>
+                                        <div>
+                                            <div class="tabs-pack">
+                                                <!-- 我的产品 -->
+                                                <div class="usrs-refund-process">
+                                                    <div>
+                                                            <form class="form-horizontal" onsubmit="javascript:return false;">
+                                                                <div class="form-group">
+                                                                    <label for="usrMobile" class="col-xs-2 "> 订单编号： </label>
+                                                                    <div class="col-xs-6">
+                                                                        <div class="form-txt" id="nickName">
+                                                                            <span> </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-3">
+
+                                                                    </div>
+                                                                    <div class="clearfloat"></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="usrMobile" class="col-xs-2 "> 产品信息：</label>
+                                                                    <div class="col-xs-10">
+
+                                                                        <div class="pro-list" id="refProductsList">
+                                                                            <ul>
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="clearfloat"></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="usrMobile" class="col-xs-2 "> 退款原因：</label>
+                                                                    <div class="col-xs-10">
+                                                                        <div>
+                                                                            <select class="form-control form-select-control" id="rf_reasontype">
+                                                                                <option value="产品功能">产品功能</option>
+                                                                                <option value="产品效果">产品效果</option>
+                                                                                <option value="售后服务">售后服务</option>
+                                                                                <option value="其 他">其他</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="other-describe">
+                                                                            <textarea class="form-control" maxlength="200" id="rf_resoninfo" rows="3" placeholder="请您在此描述问题"></textarea>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="clearfloat"></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="usrMobile" class="col-xs-2 "> 退款方式： </label>
+                                                                    <div class="col-xs-10">
+                                                                        <div class="form-txt" id="refundBank">银行汇款</div>
+                                                                        <div class="inp-tips">
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="clearfloat"></div>
+                                                                </div>
+                                                                <div class="usrBankinfobox" id="usrBankinfobox">
+                                                                    <div class="form-group">
+                                                                        <label for="usrMobile" class="col-xs-2 "> 收款人姓名： </label>
+                                                                        <div class="col-xs-4">
+                                                                            <input type="text" class="form-control" id="rf_userName" maxlength="100" placeholder="收款人姓名">
+                                                                        </div>
+                                                                        <label for="usrMobile" class="col-xs-2 "> 收款人账号：</label>
+                                                                        <div class="col-xs-4">
+                                                                            <input type="text" class="form-control" id="rf_bkcount" maxlength="30"  placeholder="收款人账号">
+                                                                        </div>
+                                                                        <div class="clearfloat"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="usrMobile" class="col-xs-2 "> 收款银行： </label>
+                                                                        <div class="col-xs-4">
+                                                                            <select class="form-control form-select-control" id="bankListshow">
+                                                                                <option value=""></option>
+
+                                                                            </select>
+                                                                        </div>
+                                                                        <label for="usrMobile" class="col-xs-2 "> 开户行： </label>
+                                                                        <div class="col-xs-4">
+                                                                            <input type="text" class="form-control" id="rf_bkaddr" maxlength="100" placeholder="开户行">
+                                                                            <div class="inp-tips">如:工商银行上海市田林支行</div>
+                                                                        </div>
+                                                                        <div class="clearfloat"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="usrMobile" class="col-xs-2 "> 退款金额： </label>
+                                                                    <div class="col-xs-9">
+                                                                        <div class="moneyNum color-red" id="totalPrice">
+                                                                            
+                                                                            <span></span>元
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="clearfloat"></div>
+                                                                </div>
+                                                                <div class="form-submitline row">
+                                                                    <div class="col-xs-2"></div>
+                                                                    <div class="col-xs-8" style="text-align:center;">
+                                                                        <button type="submit" class="btn btn-primary" id="submitRefundBtn" style="width:30%">确　定</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </form>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!-- 用户 我的 end -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="refund-foot-tipsbox">
+                                <div class="panel panel-tips">
+                                    <div class="panel-body">退货须遵守益盟操盘手退货退款政策。退款约在1-5个工作日退回您的账户，具体退款时间与您选择的支付方式有关。请您注意，准确地输入收款账户相关信息将有利于您尽快收到退款，具体退款到账时间依各银行、支付机构等的具体操作处理时间而定。如果您有任何疑问，请拨打服务热线：10108688。</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- end section-main -->
+        </div>
+    </div>
+    <div> </div>
+    <!-- 弹窗内容 start-->
+    <div class="propwin-pack" style="">
+        <!-- 用户信息 弹窗 -->
+        <div class="popwin-section popwin-regist" id="usrOptInfor" style="display:none; ">
+            <div class="pw-p">
+                <div class="pw-iner">
+                    <div class="pw-c">
+                        <div>
+                            <div class="usrOptInfor-show">
+                                退款申请成功！退款约在1-5个工作日退回您的账户，具体退款时间与您选择的支付方式有关，到账时间依各银行、支付机构等的具体操作处理时间而定。如果您有任何疑问，请拨打服务热线：10108688。
+                            </div>
+                            <div class="form-submitline">
+                                <button type="submit" class="btn btn-primary" id="closeLayer1" onclick="">确　定</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 弹窗内容 end -->
+    <script src="$StaticServerHost$/static/libs/handlebars/dist/handlebars.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/layer/layer.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/placeholder/jquery.placeholder.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/rsa/rasall.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/rsa/rsa.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/scripts/modules/order/userRefund.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/em_pc.js?$ResourceVersion$"></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/params.js?$ResourceVersion$"></script>
+    <script src="http://static.emoney.cn/ds/jrtpad/jrtpadtongji.js"></script>
+    <script src='$StaticServerHost$/static/scripts/ad.js?$ResourceVersion$'></script>
+    <script>
+        $(function () {
+            initAdvisoryId();
+        });
+    </script>
+</body>
+
+</html>

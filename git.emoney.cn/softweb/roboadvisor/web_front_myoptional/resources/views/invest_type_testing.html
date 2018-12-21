@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>我的投资风格-右侧窗口</title>
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/common.css?rev=$ResourceVersion$">
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/invest_style.css?rev=$ResourceVersion$">
+    <script src="$StaticServerHost$/static/scripts/modules/public/global_config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+    <script>
+        if (!document.addEventListener) { // IE6~IE8
+            document.write('<script src="$StaticServerHost$/static/libs/oldIEpadding.js?rev=$ResourceVersion$"><\/script>');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="mainpack">
+        <div class="firstpage">
+            <div class="test-tit">
+                我的投资风格</div>
+            <div class="test-header">
+                <img src="$StaticServerHost$/static/images/zixuantesting/bg.png" alt="" class="imgbg">
+                <div class="header-img"></div>
+                <div class="btnwrapper">
+                    <button class="btntest" clickkey="invest_type_testing" clickdata="testing" clickremark="">开始测试</button>
+                </div>
+            </div>
+        </div>
+        <div class="testedpage">
+            <div class="test-tit">我的投资风格</div>
+            <div class="test-header">
+                <img src="$StaticServerHost$/static/images/zixuantesting/A11.jpg" alt="" class="imgbg">
+                <img src="$StaticServerHost$/static/images/zixuantesting/opacity40.png" alt="" class="opacityimg">
+                <div class="test-details">
+                    <h3 id="investType"></h3>
+                    <div class="desc" id="investDesc"></div>
+                </div>
+            </div>
+            <div class="test-cnt">
+                <dl>
+                    <dt>投资目标：</dt>
+                    <dd id="qa1"></dd>
+                    <dd>
+                        <i class="icon iconyes"></i>
+                        <i class="icon icontips"></i>
+                        <div class="tipsbox" id="tipsInvestTargetTip">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>选股方向：</dt>
+                    <dd id="qa2"></dd>
+                    <dd>
+                        <i class="icon iconyes"></i>
+                        <i class="icon icontips"></i>
+                        <div class="tipsbox" id="tipsChooseStockReasonTip">
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>操　　作：</dt>
+                    <dd id="qa3"></dd>
+                    <dd>
+                        <i class="icon iconyes"></i>
+                        <i class="icon icontips"></i>
+                        <div class="tipsbox" id="tipsHoldStockTimeTip">
+                        </div>
+                    </dd>
+                </dl>
+                <button class="btntest" clickkey="invest_type_testing" clickdata="retesting" clickremark="">
+                    调整</button>
+            </div>
+        </div>
+    </div>
+    <div id="loading">正在加载中...</div>
+    <script id="tipstpl" type="text/x-handlebars-template">
+        <dl>
+            <dt>提示：</dt>
+            {{#each this}}
+            <dd> {{this}}</dd>
+            {{/each}}
+        </dl>
+    </script>
+    <script src="$StaticServerHost$/static/libs/require.js?rev=$ResourceVersion$" data-main="$StaticServerHost$/static/scripts/zixuan_testing/invest_style.config.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript">
+        document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=4C733486D79AD1987CE51C91950EE9E4' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+        //获取客户端接口
+        function GetExternal() {
+            return window.external.EmObj
+        };
+
+        //调用客户端接口
+        function PC_JH(type, c) {
+            try {
+                var obj = GetExternal();
+                return obj.EmFunc(type, c)
+            } catch (e) {}
+        };
+
+        //页面加载完成
+        function LoadComplete() {
+            //EM_FUNC_DLGSIZE();
+            try {
+                PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+            } catch (ex) {}
+        };
+
+        //页面隐藏
+        function EM_FUNC_HIDE() {
+            try {
+                PC_JH("EM_FUNC_HIDE", "");
+            } catch (ex) {}
+        };
+        //页面显示
+        function EM_FUNC_SHOW() {
+            try {
+                PC_JH("EM_FUNC_SHOW", "");
+            } catch (ex) {}
+        };
+        //打开窗口
+        function openWindow() {
+            PC_JH("EM_FUNC_DLGSIZE", "502&572");
+            LoadComplete();
+            EM_FUNC_SHOW();
+        }
+        var openType = 0; //0手动点击打开窗口，1自动弹窗
+        if (true) { //openType==0 该功能暂时屏蔽掉
+            openWindow();
+        }
+    </script>
+</html>
