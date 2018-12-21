@@ -1,1 +1,0 @@
-define(["jquery","utils","handlebars","nicescroll"],function(e,i,n,t){({StrategyID:0,init:function(){i.appendSSO(),e("#liveVideoUrl").attr("src",pagerouter.liveVideoOnline+"?isExpert=1&"+i.EMSSO())},setScroll:function(){}}).init()});

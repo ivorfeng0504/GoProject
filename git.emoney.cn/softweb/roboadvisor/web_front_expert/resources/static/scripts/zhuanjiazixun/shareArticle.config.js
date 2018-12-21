@@ -1,1 +1,0 @@
-require.config({baseUrl:window.gConfig.staticPath+"static/",waitSeconds:30,paths:{jquery:"libs/jquery/jquery.min",utils:"scripts/modules/public/utils",shareArticle:"scripts/zhuanjiazixun/shareArticle"},shim:{utils:["jquery"]}}),require(["shareArticle"],function(i){});

@@ -1,1 +1,0 @@
-window.gConfig={env:"serv",apiHost:www,staticPath:StaticServerHost},requirejs.config({baseUrl:window.gConfig.staticPath+"/static/",waitSeconds:30,paths:{jquery:"libs/jquery/jquery.min",handlebars:"libs/handlebars/dist/handlebars.min",shuangxiangpao:"scripts/shuangxiangpao/shuangxiangpao"},shim:{}}),require(["shuangxiangpao"],function(a){});
