@@ -1,0 +1,259 @@
+{{$TrainList := .TrainList}}
+{{$StaticServerHost := .StaticServerHost}}
+{{$ResourceVersion := .ResourceVersion}}
+{{$StaticResEnv := .StaticResEnv}}
+{{$ServerVirtualPath := .ServerVirtualPath}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>
+        用户培训 - 智盈
+    </title>
+
+    <!-- common CSS -->
+    <link rel="stylesheet" href="{{$StaticServerHost}}/static/train/css/common.css?rev={{$ResourceVersion}}">
+    <link rel="stylesheet" href="{{$StaticServerHost}}/static/train/css/usertraining.css?rev={{$ResourceVersion}}">
+    <link href="{{$StaticServerHost}}/static/train/libs/My97DatePicker/skin/WdatePicker.css?rev={{$ResourceVersion}}" rel="stylesheet" type="text/css">
+    <script>
+        if (!document.addEventListener) {
+            // IE6~IE8
+            document.write('<script src="{{$StaticServerHost}}/static/train/libs/oldIEpadding.js?rev={{$ResourceVersion}}"><\/script>');
+        }
+        window.winTimeData = {};
+        window.winData = {};
+    </script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="usertraing ut-layout">
+            <div class="layout-l training-video">
+                <div class="tv-pack">
+                    <div class="tv-tit" id="TVTitle">
+                        <h2></h2>
+                        <div class="sp-info">讲师：</div>
+                    </div>
+                    <div class="video-player">
+                        <div class="iframebox">
+                            <iframe src="" style="width:100%;height:562px" id="videoFrame" frameborder="0">
+
+                            </iframe>
+                        </div>
+                        <div class="defaultview">
+                            <img src="{{$StaticServerHost}}/static/train/images/training-defaultview.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layout-r training-list" id="trainingList">
+                <div class="tl-top-menu latest" id="TopTagsMenu">
+                    <div class="tlt-menu">
+                        <span class="active" data-tagid='0' clickkey="TopTagsMenu|tag" clickdata="0|userTraining" clickremark="">最新</span>
+                        <span data-tagid='1' clickkey="TopTagsMenu|tag" clickdata="1|userTraining" clickremark="">看盘</span>
+                        <span data-tagid='2' clickkey="TopTagsMenu|tag" clickdata="2|userTraining" clickremark="">选股</span>
+                        <span data-tagid='3' clickkey="TopTagsMenu|tag" clickdata="3|userTraining" clickremark="">个股分析</span>
+                        <span data-tagid='4' clickkey="TopTagsMenu|tag" clickdata="4|userTraining" clickremark="">投资体系</span>
+                    </div>
+                    <div class="func-menu">
+                        <span id="curDateshow">今天</span>
+                        <input type="text" id="d11" style="display: none;">
+                        <span class="datepickbtn icon-1" id="datePick" onclick="WdatePicker({el:'d11',onpicked:window.pickedFunc,position:{left:0},position:{left:0},maxDate:'%y-%M-%d'})"> </span>
+                        <span class="areaselect">
+                             <div class="sleAreaDiv" id="areaSelect">
+                                <div>
+                                    <span class="title">默认</span>
+                                    <i class="arrow"></i>
+                                    <div class="select-wrapper" id="selectWrapper">
+                                        <div class="option selected" data-value="默认">全国</div>
+                                        <div class="option" data-value="上海">上海</div>
+                                        <div class="option" data-value="北京">北京</div>
+                                        <div class="option" data-value="浙江">浙江</div>
+                                        <div class="option" data-value="广东">广东</div>
+                                        <div class="option" data-value="辽宁">辽宁</div>
+                                        <div class="option" data-value="河北">河北</div>
+                                        <div class="option" data-value="山东">山东</div>
+                                        <div class="option" data-value="湖南">湖南</div>
+                                        <div class="option" data-value="安徽">安徽</div>
+                                        <div class="option" data-value="湖北">湖北</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+                <div class="video-list" id="videoList">
+                    <div class="vscroll-list" id="videoScrollList">
+                        <div class="class-list-box" id="classListBox">
+                            <!-- <ul>
+                                <li>
+                                    <div class="livideo-box  first-hot">
+                                    <div class="p">
+                                            <div class="video-info">
+                                                <div class="sp">
+                                                    <div class="live-item">
+                                                        
+                                                        <div class="imgview"> <img src="./static/images/info-pic0.png" alt="">
+                                                            <div class="live-state">直播中</div>
+                                                        </div>
+                                                        <div class="live-info">
+                                                            <div class="txt">中美又要谈判了？A股又将面临不确定？</div>
+                                                            <div class="tags"> <span class="tag1">益研究</span>     <span class="tag2">投资体系</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="time"> <span>9:00</span></div>
+                                            <div class="clearfloat"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </li>
+                                <li>
+                                        <div class="livideo-box">
+                                            <div class="p">
+                                                <div class="video-info">
+                                                        <div class="sp">
+                                                    <div class="live-item first-hot">
+                                                        <div class="imgview"> <img src="./static/images/info-pic0.png" alt="">
+                                                            <div class="live-state">回放</div>
+                                                        </div>
+                                                        <div class="live-info">
+                                                            <div class="txt">中美又要谈判了？A股又将面临不确定？</div>
+                                                            <div class="tags"> <span class="tag1">益研究</span>     <span class="tag2">投资体系</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="time"><span>9:00</span></div>
+                                                <div class="clearfloat"></div>
+                                            </div>
+                                        </div>
+                                </li>
+                                <li>
+                                        <div class="livideo-box">
+                                            <div class="p">
+                                                <div class="video-info">
+                                                    <div class="sp">
+                                                    <div class="live-item first-hot">
+                                                        
+                                                        <div class="imgview"> <img src="./static/images/info-pic0.png" alt="">
+                                                            <div class="live-state">回放</div>
+                                                        </div>
+                                                        <div class="live-info">
+                                                            <div class="txt">中美又要谈判了？A股又将面临不确定？</div>
+                                                            <div class="tags"> <span class="tag1">益研究</span>     <span class="tag2">投资体系</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="time"><span>9:00</span></div>
+                                                <div class="clearfloat"></div>
+                                            </div>
+                                            </div>
+                                </li>
+                                <li></li>
+                                <li></li>
+                                <li>
+                                    <div class="livideo-box">
+                                        <div class="p">
+                                            <div class="video-info">
+                                                <div class="sp">
+                                                    <div class="live-item first-hot">
+                                                        <div class="imgview"> <img src="./static/images/info-pic0.png" alt="">
+                                                            <div class="live-state">回放</div>
+                                                        </div>
+                                                        <div class="live-info">
+                                                            <div class="txt">中美又要谈判了？A股又将面临不确定？</div>
+                                                            <div class="tags"> <span class="tag1">益研究</span>     <span class="tag2">投资体系</span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="time"><span>9:00</span></div>
+                                            <div class="clearfloat"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value="{{.TrainList}}" id="pageInitData">
+    <input type="hidden" value="{{.NowTime}}" id="nowTime">
+    <script src="{{$StaticServerHost}}/static/train/scripts/modules/public/global_config_{{$StaticResEnv}}.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/jquery/jquery.handlebars.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/nicescroll/jquery.nicescroll.min.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/jquery/jquery.xdomainrequest.min.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/layer/layer.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/scripts/modules/public/utils.opt.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/My97DatePicker/WdatePicker.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/scripts/usertraining/usertraining.opt.js?rev={{$ResourceVersion}}"></script>
+    <script type="text/javascript">
+        document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=884FE25DEEE45BFDEBF343E54A201D3D' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+        (function() {
+            //获取客户端接口
+            function GetExternal() {
+                return window.external.EmObj
+            };
+
+            //调用客户端接口
+            function PC_JH(type, c) {
+                try {
+                    var obj = GetExternal();
+                    return obj.EmFunc(type, c)
+                } catch (e) {}
+            };
+
+            //页面加载完成
+            function LoadComplete() {
+                //EM_FUNC_DLGSIZE();
+                try {
+                    PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+                } catch (ex) {}
+            };
+
+            //页面隐藏
+            function EM_FUNC_HIDE() {
+                try {
+                    PC_JH("EM_FUNC_HIDE", "");
+                } catch (ex) {}
+            };
+            //页面显示
+            function EM_FUNC_SHOW() {
+                try {
+                    PC_JH("EM_FUNC_SHOW", "");
+                } catch (ex) {}
+            };
+            //打开窗口
+            function openWindow() {
+                PC_JH("EM_FUNC_DLGSIZE", "703&1100");
+                LoadComplete();
+                EM_FUNC_SHOW();
+            }
+            var openType = 0; //0手动点击打开窗口，1自动弹窗
+            if (true) { //openType==0 该功能暂时屏蔽掉
+                openWindow();
+            }
+        })();
+    </script>
+</body>
+</html>

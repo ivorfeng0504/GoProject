@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <title> 用户中心</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="shortcut icon" href="$StaticServerHost$/static/images/favicon.png?$ResourceVersion$" type="image/x-icon">
+    <link rel="icon" sizes="any" mask="" href="$StaticServerHost$/static/images/images/favicon.png?$ResourceVersion$">
+    <link rel='stylesheet' type='text/css' media='screen' href='$StaticServerHost$/static/css/common.min.css?$ResourceVersion$'
+    />
+    <link rel='stylesheet' type='text/css' media='screen' href='$StaticServerHost$/static/css/app.min.css?$ResourceVersion$'
+    />
+    <link rel="stylesheet" href="$StaticServerHost$/static/libs/swiper/css/swiper.min.css?$ResourceVersion$">
+
+    <script id="html_mine_grant" type="text/x-handlebars-template">
+        <div class='usr-classvideo' style='height:160px;'>
+            <div style='height:100%;'>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {{#each Message}}
+                        <div class="swiper-slide">
+                            <div>
+                                <div class="class-video-pack">
+
+                                    <div class="cvideo-pic">
+
+                                        <div class="v-pic">
+                                            <img src="{{AwardImg}}" alt="">
+                                        </div>
+                                        {{#if IsVideo}}
+                                        <div class="v-mask"></div>
+                                        {{else}}
+                                        <div></div>
+                                        {{/if}}
+                                    </div>
+                                    <div class="cvideo-tit">
+                                        {{AwardName}}
+                                    </div>
+                                    <div class="cvideo-btn">
+                                        <button class="btn btn-primary" user_award_id="{{UserAwardId}}"> 领 取 </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="html_mine_receive" type="text/x-handlebars-template">
+        <table class="table table-auto form-table">
+            <colgroup>
+            </colgroup>
+            <tbody>
+                {{#each Message}}
+                <tr>
+                    <td>{{addOne @index}}</td>
+                    <td>{{AwardName}}</td>
+                    <td>
+                        <a href="{{IntroduceVideo}}" target="_blank">
+                            <i class='icon'>&#xe667;</i>
+                        </a>
+                    </td>
+                    <td>{{AvailableDay}}</td>
+                    <td>{{ExpireTime}}</td>
+                    <td>{{AwardStateDesc}}</td>
+                    <td>{{AwardTypeDesc}}</td>
+                    <td>
+                        <span class="span_online"></span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+
+    <script id="html_mine_product" type="text/x-handlebars-template">
+        <table class="table table-auto form-table">
+            <colgroup>
+            </colgroup>
+            <tbody>
+                {{#each Message}}
+                <tr>
+                    <td>{{addOne @index}}</td>
+                    <td>{{ProductName}}</td>
+                    <td>{{ActivateTime}}</td>
+                    <td>{{ExpireTime}}</td>
+                    <td>{{StateDesc}}</td>
+                    <td>
+                        <span class="span_online_product"></span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="$StaticServerHost$/static/libs/html5shiv.js?$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/respond.js?$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/excanvas.js?$ResourceVersion$"></script>
+    <![endif]-->
+    <script src='$StaticServerHost$/static/libs/jquery/jquery.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/libs/swiper/js/swiper.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/libs/handlebars/dist/handlebars.min.js?$ResourceVersion$'></script>
+</head>
+
+<body>
+    <div class='pl-container usrcenter'>
+        <!-- section-headtop -->
+        <div class='headertop'>
+            <div class='logoicon'></div>
+            <div class='topnav' id='topNav'>
+                <div class='navmenu'>
+                    <ul>
+                        <li class='' data-item='homepage'>
+                            <a href="$ServerVirtualPath$/homepage/index$SSOQueryString$" id="a_home_page">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe648;</i>
+                                </span>
+                                <span class='txt'>首 页</span>
+                            </a>
+                        </li>
+                        <li class='' data-item='activitiespage'>
+                            <a href="$ServerVirtualPath$/activity/index$SSOQueryString$">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe631;</i>
+                                </span>
+                                <span class='txt'>活 动</span>
+                            </a>
+                        </li>
+                        <li class='active' data-item='userpage'>
+                            <a href="$ServerVirtualPath$/mine/index$SSOQueryString$">
+                                <span class='sign'>
+                                    <i class='icon'>&#xe600;</i>
+                                </span>
+                                <span class='txt'>我 的</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='topright'>
+                <button class='btn btn-default btn-zixun'>
+                    <i class='icon '>&#xe669;</i>
+                    <span id="span_online"></span>
+                    <span id="span_online_product" style="display: none"></span>
+                </button>
+            </div>
+        </div>
+        <!-- end section-headtop -->
+
+        <!--  section-main 主显示区域   -->
+        <div class='maincont' id='MainCont'>
+            <div class='mc-pack'>
+                <div class='iner'>
+                    <div class='cntbox'>
+                        <!-- 用户 我的  -->
+                        <div class="pageItem userpage" style='display:block;'>
+                            <div>
+                                <div class="usr-anounce">
+                                    <div class="text-primary" id="txt_award_count">
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class='usr-classvideo-top' id="ad_mine_center">
+                                        <div class="row">
+                                            <div class="col-xs-1 central">
+                                                <div class="swiper-button-prev"> </div>
+                                            </div>
+                                            <div class="col-xs-10" id="div_mine_grant">
+
+                                            </div>
+                                            <div class="col-xs-1 central">
+                                                <div class="swiper-button-next"> </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="tabs-pack">
+                                        <div class="act-tabsnav tabs-nav">
+                                            <ul class="nav nav-secondary">
+                                                <li class="active" id="btn_product">
+                                                    <a href="###">我的产品</a>
+                                                </li>
+                                                <li id="btn_award">
+                                                    <a href="###">我的福利</a>
+                                                </li>
+
+                                                <div class="clearfloat"></div>
+                                            </ul>
+                                        </div>
+                                        <div class="tabs-cnt">
+
+                                            <!-- 我的产品 -->
+                                            <div class="tabsitem usrs-products active">
+                                                <div>
+                                                    <div class='upro-tablepack fixed-tablepack'>
+                                                        <div class='fixed-topbox'>
+                                                            <table class="table table-auto form-table fixed-thead">
+                                                                <colgroup>
+                                                                </colgroup>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>序号</th>
+                                                                        <th>名称</th>
+                                                                        <th>首次激活日期</th>
+                                                                        <th>到期日</th>
+                                                                        <th>状态</th>
+                                                                        <th>操作</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                        <div class='scroll-box' id="div_mine_product">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- 我的福利 -->
+                                            <div class="tabsitem usrs-welfare">
+                                                <div class='pastActs-list'>
+                                                    <div class='pal-iner'>
+                                                        <div class='uwel-tablepack fixed-tablepack'>
+                                                            <div class='fixed-topbox'>
+                                                                <table class="table table-auto form-table fixed-thead">
+                                                                    <colgroup>
+                                                                        <!-- <col width="12%"></col>
+                                                                    <col width="42%"></col>
+                                                                    <col width="22%"></col>
+                                                                    <col width="10%"></col>
+                                                                    <col width="10%"></col> -->
+                                                                    </colgroup>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>序号</th>
+                                                                            <th>名称</th>
+                                                                            <th>功能介绍</th>
+                                                                            <th>权限</th>
+                                                                            <th>到期日</th>
+                                                                            <th>状态</th>
+                                                                            <th>类型</th>
+                                                                            <th>操作</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                            <div class='scroll-box' id="div_mine_receive">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="usrorder-btn-line">
+                                      <a href="$ServerVirtualPath$/mine/myorder$SSOQueryString$">我的订单》</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- 用户 我的 end -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end section-main -->
+    </div>
+
+    <script src='$StaticServerHost$/static/scripts/config_$StaticResEnv$.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/libs/layer/layer.js?$ResourceVersion$'></script>
+    <script src="$StaticServerHost$/static/libs/placeholder/jquery.placeholder.min.js?$ResourceVersion$"></script>
+    <script src='$StaticServerHost$/static/scripts/app.min.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/params.js?$ResourceVersion$'></script>
+    <script src="http://static.emoney.cn/ds/jrtpad/jrtpadtongji.js"></script>
+    <script src='$StaticServerHost$/static/scripts/ad.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/template_mine.js?$ResourceVersion$'></script>
+    <script src='$StaticServerHost$/static/scripts/mine.js?$ResourceVersion$'></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/em_pc.js?$ResourceVersion$"></script>
+
+    <script>
+        $(document).ready(function () {
+            initAdvisoryId();
+            initAdvisoryIdProduct();
+            $(".btn-close").click(function () {
+                closePCWindow();
+            });
+            //初始化用户手机状态
+            initMobileState();
+            //初始化活动点击链接
+            initActivityAd();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+{{$StaticServerHost := .StaticServerHost}}
+{{$ResourceVersion := .ResourceVersion}}
+{{$StaticResEnv := .StaticResEnv}}
+{{$ServerVirtualPath := .ServerVirtualPath}}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>用户培训-引导</title>
+
+    <link rel="stylesheet" href="{{$StaticServerHost}}/static/train/css/common.css?rev={{$ResourceVersion}}">
+    <style>
+        body{
+            height:100%;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        html {
+            overflow: hidden;
+            height:100%;
+        }
+        .swiper-container {
+            width: 1082px;
+            height: 630px;
+            overflow: hidden;
+            position: absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+        }
+        .swiper-container .swiper-wrapper {
+            width:6000px;
+            height:630px;
+
+        }
+        .swiper-container .swiper-wrapper .swiper-slide {
+            float:left;
+            position: relative;
+            width: 1082px;
+            height: 630px;
+        }
+        .swiper-container .swiper-wrapper .swiper-slide img {
+            max-width:100%;
+            max-height:100%;
+        }
+        .swiper-container .arrow-right {
+            position: absolute;
+            bottom:20px;
+            right:20px;
+            cursor: pointer;
+            color:#fff;
+            font-size:18px;
+            height:22px;
+            padding-bottom:4px;
+            border-bottom:1px solid #fff;
+            user-select: none;
+        }
+        .swiper-container .blacks {
+            color:#000;
+            border-bottom:1px solid #000;
+
+        }
+        .swiper-container .swiper-wrapper .swiper-slide .btn {
+            position: absolute;
+            bottom:150px;
+            width:271px;height:56px;
+            background-color: transparent;
+            background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==);
+            background-repeat: repeat;
+        }
+        .swiper-container .swiper-wrapper .swiper-slide .video-show {
+            left:240px;
+
+        }
+        .swiper-container .swiper-wrapper .swiper-slide .user-training {
+            right:230px;
+        }
+
+
+    </style>
+    <script>document.addEventListener || document.write('<script src="{{$StaticServerHost}}/static/train/libs/oldIEpadding.js?rev={{$ResourceVersion}}"><\/script>'); var pngbase = "data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="</script>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="{{$StaticServerHost}}/static/train/images/usertraining/guidor001.png">
+                <div class="arrow-right">下一页>></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{{$StaticServerHost}}/static/train/images/usertraining/guidor002.png">
+                <div class="arrow-right blacks">下一页>></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{{$StaticServerHost}}/static/train/images/usertraining/guidor003.png">
+                <div class="arrow-right">下一页>></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{{$StaticServerHost}}/static/train/images/usertraining/guidor004.png">
+                <div class="arrow-right">下一页>></div>
+            </div>
+            <div class="swiper-slide">
+                <img src="{{$StaticServerHost}}/static/train/images/usertraining/guidor005.png">
+                <a class="btn video-show" target="_blank" href="http://emoney.gensee.com/webcast/site/vod/play-53f67c0a060b4ddc8a1fd04a39ec4179"></a>
+                <a class="btn user-training" href="{{$ServerVirtualPath}}/train/index.html"></a>
+            </div>
+        </div>
+    </div>
+    <script src="{{$StaticServerHost}}/static/train/libs/jquery/jquery.min.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/scripts/modules/public/utils.opt.js?rev={{$ResourceVersion}}"></script>
+    <script src="{{$StaticServerHost}}/static/train/libs/swiper/idangerous.swiper.min.js?rev={{$ResourceVersion}}"></script>
+    <script type="text/javascript">
+        $(function() {
+            var mySwiper = $('.swiper-container').swiper({
+                loop: false,
+                paginationClickable: true,
+                onlyExternal: true
+            });
+            $('.arrow-right').on('click', function(e) {
+                e.preventDefault();
+                mySwiper.swipeNext();
+            });
+        });
+        var tjAppid = {usertraining: '10150'};
+
+        $.emoneyAanalytics().Init(tjAppid.usertraining, 'userTrainingguid', '');
+    </script>
+    <script type="text/javascript">
+        document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=884FE25DEEE45BFDEBF343E54A201D3D' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+        (function() {
+            //获取客户端接口
+            function GetExternal() {
+                return window.external.EmObj
+            };
+
+            //调用客户端接口
+            function PC_JH(type, c) {
+                try {
+                    var obj = GetExternal();
+                    return obj.EmFunc(type, c)
+                } catch (e) {}
+            };
+
+            //页面加载完成
+            function LoadComplete() {
+                //EM_FUNC_DLGSIZE();
+                try {
+                    PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+                } catch (ex) {}
+            };
+
+            //页面隐藏
+            function EM_FUNC_HIDE() {
+                try {
+                    PC_JH("EM_FUNC_HIDE", "");
+                } catch (ex) {}
+            };
+            //页面显示
+            function EM_FUNC_SHOW() {
+                try {
+                    PC_JH("EM_FUNC_SHOW", "");
+                } catch (ex) {}
+            };
+            //打开窗口
+            function openWindow() {
+                PC_JH("EM_FUNC_DLGSIZE", "646&1100");
+                LoadComplete();
+                EM_FUNC_SHOW();
+            }
+            var openType = 0; //0手动点击打开窗口，1自动弹窗
+            if (true) { //openType==0 该功能暂时屏蔽掉
+                openWindow();
+            }
+        })();
+    </script>
+</body>
+
+</html>

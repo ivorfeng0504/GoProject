@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>智盈专家资讯</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <meta name="applicable-device" content="mobile">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/shareArticle.css?rev=$ResourceVersion$">
+    <script src="$StaticServerHost$/static/scripts/modules/public/global_config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+    <script>
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function() {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 750) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+
+</head>
+<body ontouchstart="">
+
+
+    <header class="page-header-rem">
+        <div class="page-title detail-page">智盈专家资讯</div>
+    </header>
+
+    <main class="page-content">
+        <section class="crumb-path">
+            <span class="current" id="source"></span>
+        </section>
+        <section class="article-detail">
+            <h1 class="main-title" id="artcleTitle"></h1>
+            <div class="desc">
+                <span class="release-time" id="articlePublishDate">最后更新时间：2018-02-06 04:57:08</span>
+                <span class="reading-count" id="reading">阅读量：555</span>
+            </div>
+            <div class="article-detail-content">
+                <article class="article-box" id="acScrollbox">
+
+                </article>
+                <!-- <a class="reading-all" id="reading-all" href="javascript:;">点击查看全文</a> -->
+                <div class="state">
+                    上述内容均仅供参考，股市有风险，投资需谨慎。
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <input id="data-article-type" type="hidden" value="jzsj">
+
+    <footer class="page-footer">
+        <p class="copyright">益盟智盈专家资讯
+            <br>copyright 2018 emoney.cn</p>
+    </footer>
+    <script src="$StaticServerHost$/static/libs/require.js?rev=$ResourceVersion$" data-main="$StaticServerHost$/static/scripts/zhuanjiazixun/shareArticle.config.js?rev=$ResourceVersion$"></script>
+    <!-- 10163  专家资讯   加pv -->
+    <script type="text/javascript">
+        document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=8B9093887C7B911EA8A566613F19F22D' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+</body>
+</html>

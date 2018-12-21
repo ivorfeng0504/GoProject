@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>说点什么</title>
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/saysomethings.css?rev=$ResourceVersion$">
+</head>
+
+<body>
+    <div class="mainpack">
+        <div class="container-box">
+            <div class="saybox">
+                <div class="txtwrapper">
+                    <input type="text" readonly="readonly" value="" id="txt_add_stockname">
+                </div>
+                <div class="txtwrapper textareawrapper">
+                    <textarea placeholder="说一说您对股票的看法" id="content"></textarea>
+                </div>
+            </div>
+            <div class="footer">
+                <span class="qq-emotion" id="qqEmotion">
+                    <i class="icon-1">&#xe62d;</i>
+                </span>
+                <input type="button" class="btn" value="发布" id="release">
+            </div>
+        </div>
+    </div>
+    <script src="$StaticServerHost$/static/scripts/modules/public/global_config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/libs/jquery/jquery.min.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/libs/layer/layer.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript" src="$StaticServerHost$/static/scripts/modules/private/jquery.qqFace.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript">
+        (function() {
+            var $releaseBtn = $('#release');
+            var stockCode = GetQueryString('goodsID');
+            $('#txt_add_stockname').val(decodeURIComponent(GetQueryString('goodsName').replace(/\+/ig, '%20')));
+            $('#qqEmotion').qqFace({
+                assign: 'content', //给输入框赋值 
+                face_count: 36,
+                path: 'http://static.emoney.cn/live/Scripts/xheditor/xheditor_emot/newface/default/' //表情图片存放的路径 
+            });
+            $releaseBtn.on('click', function() {
+                var $this = $(this);
+                var $stock = $('#txt_add_stockname');
+                var $content = $('#content');
+                var stockName = $.trim($stock.val());
+                var content = $.trim($content.val());
+                var flag = true;
+                if (!content) {
+                    var timer = setTimeout(function() {
+                        layer.msg('请输入对股票的看法');
+                    }, 200);
+                    flag = false;
+                    $content.focus();
+                }
+                if (stockName && content && flag) {
+                    $.ajax({
+                        url: window.gConfig.apiHost + 'stocktalk/addstocktalk',
+                        type: 'POST',
+                        timeout: ajaxTimeout,
+                        dataType: 'JSON',
+                        data: {
+                            StockCode: stockCode,
+                            StockName: stockName,
+                            Content: content
+                        },
+                        success: function(data) {
+                            if (data.RetCode == 0) {
+                                layer.msg('消息已发送');
+                                var timer = setTimeout(function() {
+                                    closeWin();
+                                }, 1000);
+                            } else {
+                                layer.msg(data.RetMsg);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            //_this.errorPop('服务器发生异常，请稍后再试~')
+                        }
+                    });
+                }
+            });
+            //获取客户端接口
+            function GetExternal() {
+                return window.external.EmObj
+            };
+
+            //调用客户端接口
+            function PC_JH(type, c) {
+                try {
+                    var obj = GetExternal();
+                    return obj.EmFunc(type, c)
+                } catch (e) {}
+            };
+
+            function closeWin() {
+                try {
+                    PC_JH("EM_FUNC_CLOSE", "");
+                } catch (ex) {}
+            }
+
+            function GetQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return decodeURI(r[2]);
+                return null;
+            }
+        })();
+    </script>
+    <script>
+        (function() {
+            //获取客户端接口
+            function GetExternal() {
+                return window.external.EmObj
+            };
+
+            //调用客户端接口
+            function PC_JH(type, c) {
+                try {
+                    var obj = GetExternal();
+                    return obj.EmFunc(type, c)
+                } catch (e) {}
+            };
+
+            //页面加载完成
+            function LoadComplete() {
+                //EM_FUNC_DLGSIZE();
+                try {
+                    PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+                } catch (ex) {}
+            };
+
+            //打开窗口
+            function openWindow() {
+                // PC_JH("EM_FUNC_DLGSIZE", "703&1100");
+                LoadComplete();
+                // EM_FUNC_SHOW();
+            }
+            var openType = 0; //0手动点击打开窗口，1自动弹窗
+            if (true) { //openType==0 该功能暂时屏蔽掉
+                openWindow();
+            }
+        })();
+    </script>
+</body>
+
+</html>

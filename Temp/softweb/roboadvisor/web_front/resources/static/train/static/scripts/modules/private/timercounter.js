@@ -1,0 +1,1 @@
+define(["jquery"],function(l){"use strict";return{timecounter:function(t,e){(function(t,e){var n=null,i=60;l(t).click(function(){var t=l(this);t.attr("disabled")||(t.text(i+"s后过期").attr("disabled",!0),n=setInterval(function(){t.text(--i+"s后过期"),i<=0&&(clearInterval(n),t.text("请输入验证码").attr("disabled",!1),i=60)},1e3))})}).call(null,t,e)}}});

@@ -1,0 +1,43 @@
+{
+    "RetCode": 0,
+    "RetMsg": "SUCCESS",
+    "Message": [
+        {
+            "StockTalkId": 1,
+            "NickName": "用户昵称",
+            "Avatar": "",
+            "StockCode": "000001",
+            "StockName": "华策影视",
+            "Content": "平安银行怎么样666平安银行怎么样666行怎么样666平安银行怎么样666行怎么样666平安银行怎么样666行怎么样",
+            "CreateTime": "2018-06-12T15:18:51"
+        },
+        {
+            "StockTalkId": 2,
+            "NickName": "用户昵称2",
+            "Avatar": "",
+            "StockCode": "000001",
+            "StockName": "平安银行",
+            "Content": "平安银行怎么样666",
+            "CreateTime": "2018-06-12T15:18:53"
+        },
+        {
+            "StockTalkId": 3,
+            "NickName": "用户昵称3",
+            "Avatar": "",
+            "StockCode": "000001",
+            "StockName": "平安银行",
+            "Content": "平安银行怎么样666平安银行怎么样666平安银行怎么样666平安银行怎么样666",
+            "CreateTime": "2018-06-12T15:18:58"
+        },
+        {
+            "StockTalkId": 4,
+            "NickName": "用户昵称4",
+            "Avatar": "",
+            "StockCode": "000001",
+            "StockName": "平安银行",
+            "Content": "平安银行怎么样666平安银行怎么样666平安银行怎么样666平安银行怎么样666",
+            "CreateTime": "2018-06-12T15:18:20"
+        }
+    ],
+    "TotalCount": 0
+}

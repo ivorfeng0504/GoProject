@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <title>
+        策略-学习阅读
+    </title>
+
+    <!-- common CSS -->
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/common.css?rev=$ResourceVersion$">
+    <link rel="stylesheet" href="$StaticServerHost$/static/css/celueList.css?rev=$ResourceVersion$">
+    <!-- s0.static.dsclient.emoney.cn/static/css/celueList.css
+    http://s0.static.dsclient.emoney.cn/expert/static/css/common.css?rev=20180503 -->
+    <script>
+        if (!document.addEventListener) {
+            // IE6~IE8
+            document.write('<script src="$StaticServerHost$/static/libs/oldIEpadding.js?rev=$ResourceVersion$"><\/script>');
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="tab-list">
+            <li class="tab-item current">
+                <a class="tab-item-link" href="javascript:;">学习阅读</a>
+            </li>
+            <li class="tab-item">
+                <a class="tab-item-link" clickkey="celuevideo" clickdata="celuevideo" clickremark="" href='$ServerVirtualPath$/strategyservice/celueVideo'>视频学习</a>
+            </li>
+            <li class="tab-item">
+                <a class="tab-item-link" clickkey="celueTraining" clickdata="celueTraining" clickremark="" href='$ServerVirtualPath$/strategyservice/celueTraining'>实战培训</a>
+            </li>
+        </ul>
+        <div class="content">
+            <div class="content-box">
+                <div class="content-left list">
+                    <ul class="nav-list" id="navList">
+                        <div class="no-info">
+                            <span class="inerloading"></span>菜单权限加载中...</div>
+                    </ul>
+                </div>
+                <div class="content-middle ">
+                    <div class="midddle-content-box" id="contentScroll">
+                        <div class="article-list " id="articleList">
+                            <div class="no-info">
+                                <span class="inerloading"></span>内容正在加载...</div>
+                        </div>
+                        <div class="other-strategy-news">
+                            <div class="title">其它策略新闻</div>
+                            <ul class="strategy-news-list" id="strategyNewsList">
+                                <div class="no-info">
+                                    <span class="inerloading"></span>其它策略新闻正在加载...</div>
+                            </ul>
+                        </div>
+                        <div class="state-box">
+                            <div class="state-content">
+                                [免责声明] 以上数据、信息仅供参考，不构成投资建议，益盟操盘手不对其准确性、完整性或有效性负责，投资者据此操作，风险自担。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right list">
+                    <div class="ive-newslist infos">
+                        <h2 class="ive-nl-tit">
+                            <i class="icon-1 hot">&#xe635;</i> 热门策略文章</h2>
+                        <div class='ive-nl-pack hostnews-list' id="">
+                            <ul class="ive-nl-cnt" id="hotNewsList">
+                                <div class="no-info">
+                                    <span class="inerloading"></span>热门策略文章正在加载...</div>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="ive-newslist infos relation-video">
+                        <h2 class="ive-nl-tit">
+                            <i class="icon-1">&#xe667;</i>相关视频
+                            <a class="more" id="moreVideo" href="javascritp:;">更多
+                                <i class="icon-1">&#xe656;</i>
+                            </a>
+                        </h2>
+                        <div class='ive-nl-pack relation-video-list' id="">
+                            <ul class="ive-nl-cnt" id="relationVideoList">
+                                <div class="no-info">
+                                    <span class="inerloading"></span>相关视频正在加载...</div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfloat"></div>
+            </div>
+        </div>
+    </div>
+    <script src="$StaticServerHost$/static/scripts/modules/public/global_config_$StaticResEnv$.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/jquery/jquery.handlebars.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/nicescroll/jquery.nicescroll.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/jquery/jquery.xdomainrequest.min.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/libs/layer/layer.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/scripts/modules/public/utils.opt.js?rev=$ResourceVersion$"></script>
+    <script src="$StaticServerHost$/static/scripts/celuezixun/celueReading.opt.js?rev=$ResourceVersion$"></script>
+    <script type="text/javascript">
+        document.write(unescape("%3Cscript src='http://img.tongji.emoney.cn/scripts/emoneyanalyticsalipv.js%3Fcode=8B9093887C7B911EA8A566613F19F22D' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script>
+        (function() {
+            //获取客户端接口
+            function GetExternal() {
+                return window.external.EmObj
+            };
+
+            //调用客户端接口
+            function PC_JH(type, c) {
+                try {
+                    var obj = GetExternal();
+                    return obj.EmFunc(type, c)
+                } catch (e) {}
+            };
+
+            //页面加载完成
+            function LoadComplete() {
+                //EM_FUNC_DLGSIZE();
+                try {
+                    PC_JH("EM_FUNC_DOWNLOAD_COMPLETE", "");
+                } catch (ex) {}
+            };
+
+            //页面隐藏
+            function EM_FUNC_HIDE() {
+                try {
+                    PC_JH("EM_FUNC_HIDE", "");
+                } catch (ex) {}
+            };
+            //页面显示
+            function EM_FUNC_SHOW() {
+                try {
+                    PC_JH("EM_FUNC_SHOW", "");
+                } catch (ex) {}
+            };
+            //打开窗口
+            function openWindow() {
+                PC_JH("EM_FUNC_DLGSIZE", "703&1100");
+                LoadComplete();
+                EM_FUNC_SHOW();
+            }
+            var openType = 0; //0手动点击打开窗口，1自动弹窗
+            if (true) { //openType==0 该功能暂时屏蔽掉
+                openWindow();
+            }
+        })();
+    </script>
+
+</body>
+</html>
